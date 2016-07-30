@@ -24,6 +24,6 @@ def scrape_web(url):
 			if word in ques:
 				flag = False
 		if flag:
-			res.append(ques)
+			res.append(ques.strip())
 	return res
 	
