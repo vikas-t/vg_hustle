@@ -8,11 +8,8 @@ import utils
 
 @api_view(['GET'])
 def test_view(req):
-	return Response("hello")
-
-def test_view2(req):
-	return hp('okay this is working')
+	return Response("pong")
 
 @api_view(['GET'])
 def scrape_ques(req):
-	return Response(utils.scrap_web())
+	return Response(utils.scrape_web(req.GET['url']))

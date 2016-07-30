@@ -19,7 +19,7 @@ from test1 import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^test1$', views.test_view),
-    url(r'^find$', views.scrape_ques)
+    url(r'^ping$', views.test_view),
+    url(r'^scrape$', views.scrape_ques)
 
 ]
