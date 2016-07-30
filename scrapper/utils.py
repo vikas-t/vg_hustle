@@ -3,21 +3,17 @@
 import sys,re, urllib
 from bs4 import BeautifulSoup as bs
 
-exclude_words = ["href=", "<", ">", ":", "/", '\\']
-try:
-	url = sys.argv[1]
-except:
-	pass
+exclude_words = ["href=", '\\']
 
 def scrape_web(url):
 	res = []
-
-	#url = "http://www.indiabix.com/computer-science/database-systems/"
+	r_ex = r"(.+\?)[^<>;]*?<"
+	
 	r = urllib.urlopen(url).read()
+	if not r:
+		return False
 	soup = bs(r, "html.parser")
 	data =  soup.prettify().encode("utf-8")
-	r_ex = r"(.+\?).*[\n\s ]*?<"
-
 	for ques in re.findall(r_ex, data):
 		flag = True
 		for word in exclude_words:
